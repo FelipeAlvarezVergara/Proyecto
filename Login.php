@@ -33,7 +33,7 @@ else if($nr == 0)
 	     <head>
 	     </head>
 	     <body>
-	          <h1>LINKS</h1>
+	          <h1>LINKS IDE ONLINE</h1>
 	          <h3>Lista</h3>
 	          <ul>
 	          	<li><a href="https://www.offidocs.com/index.php/desktop-programming-tools-online/eclipse-online-ide-java-c-php">Opcion 1</li>
