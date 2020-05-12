@@ -14,7 +14,7 @@
             <ul>
               <!--<li><a href="descargaal.php" target="_blank">Actividad</a></li>-->
               <li><a href="cronometro.html" target="_blank">Tiempo Actividad</a></li>
-              <!--<li><a href="actividadesal.php" target="_blank">Enviar Actividad</a></li>-->
+              <li><a href="actividadesal.php" target="_blank">Enviar Actividad</a></li>
               <!--<li><a href="descargare.php">Actividades Enviadas</a></li>-->
               <li><a href="errores.php" target="_blank">Enviar Error</a></li>
               <li><a href="roles.php" target="_blank">Roles</a></li>
