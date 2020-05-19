@@ -1,6 +1,6 @@
 <?php
 
-    require 'database.php';
+  /*  require 'database.php';
 
 
     if (isset($_POST['roles'])) {
@@ -12,6 +12,12 @@
         } else {
           header('Location: '.RUTA.'programador.php');
         }
+    }*/
+
+    if (isset($_POST['Programador'])) {
+        header('Location: '.RUTA.'programador.php');
+    } else if (isset($_POST['Supervisor'])) {
+        header('Location: '.RUTA.'supervisor.php');
     }
 
  ?>

@@ -10,7 +10,8 @@
 <body class="programando">
     <form action="roles.php" method="post">
         <h1>Elegir un rol</h1>
-        <input type="submit" name="roles" value="Rol">
+        <input type="submit" name="Programador" value="Programador">
+        <input type="submit" name="Supervisor" value="Supervisor">
     </form>
 </body>
 </html>
