@@ -13,6 +13,7 @@
           <div class="menu">
             <ul>
               <!--<li><a href="descargaal.php" target="_blank">Actividad</a></li>-->
+              <li><a href="alumnore.php" target="_blank">Registro</a></li>
               <li><a href="cronometro.html" target="_blank">Tiempo Actividad</a></li>
               <li><a href="actividadesal.php" target="_blank">Enviar Actividad</a></li>
               <!--<li><a href="descargare.php">Actividades Enviadas</a></li>-->
