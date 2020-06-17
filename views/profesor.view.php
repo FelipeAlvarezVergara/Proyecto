@@ -14,8 +14,6 @@
             <ul>
               <!--<li><a href="actividades.php" target="_blank">Subir Actividad</a></li>-->
               <!--<li><a href="descargara.php" target="_blank">Actividades</a></li>-->
-              <li><a href="Grupos.html" target="_blank">Grupos</a></li>
-              <li><a href="buscador.php" target="_blank">Cursos</a></li>
               <li><a href="descargasub.php" target="_blank">Actividades Subidas</a></li>
               <li><a href="reportesp.php" target="_blank">Reportes</a></li>
               <li><a href="descargarep.php" target="_blank">Errores</a></li>
