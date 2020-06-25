@@ -12,17 +12,24 @@
     $sql = "SELECT * FROM alumno WHERE nombre = '$nombre' AND apellidos = '$apellidos' AND rut = '$rut' AND curso = '$cursos'";
     $resultado = mysqli_query($conn, $sql);
 
+    $sql1 = "SELECT * FROM alumno WHERE rut = '$rut'";
+    $result = mysqli_query($conn, $sql1);
+
   if (empty($nombre) || empty($apellidos) || empty($rut) || empty($cursos)) {
       echo "Ingresar todos los datos";
   } else {
       if (!empty($resultado) AND mysqli_num_rows($resultado) > 0) {
          echo "El curso ya esta ingresado";
-      } else {
-        $query="INSERT INTO alumno(ida, nombre, apellidos, rut, curso) VALUES (null, '$nombre','$apellidos','$rut','$cursos')";
-        if (mysqli_query($conn, $query)) {
-            echo "Datos ingresados correctamente";
-        }else {
-            echo "Error al ingresar los datos";
+      }else {
+        if (!empty($result) AND mysqli_num_rows($result) > 0) {
+          echo "El rut ya existe";
+        } else {
+          $query="INSERT INTO alumno(ida, nombre, apellidos, rut, curso) VALUES (null, '$nombre','$apellidos','$rut','$cursos')";
+          if (mysqli_query($conn, $query)) {
+              echo "Datos ingresados correctamente";
+          }else {
+              echo "Error al ingresar los datos";
+          }
         }
       }
     }
