@@ -16,7 +16,7 @@
           <div class="row">
               <form action="actividadesal.php" method="post" enctype="multipart/form-data">
                     <h3>Subir Archivos</h3>
-                    <input type="file" name="archivos">
+                    <input type="file" name="archivo">
                     <button type="submit" name="save">Subir</button>
               </form>
           </div>

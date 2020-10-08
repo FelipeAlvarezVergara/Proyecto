@@ -3,11 +3,11 @@
   <head>
     <meta charset="utf-8">
     <title>Buscador</title>
+    <link rel="stylesheet" href="css/tabla.css">
   </head>
   <body>
-      <h1>Buscador de Alumnos por Curso</h1>
-      <form class="" action="buscador.php" method="post">
-        <!--<input type="text" name="cursos" placeholder="Ingresar el curso...">-->
+      <h1>Alumnos Por Curso</h1>
+      <form action="buscador.php" method="post">
         <select class="form-control" name="cursos">
           <option value="">Curso</option>
           <option value="Algoritmos y Estrucuras de Datos">Algoritmos y Estructuras de datos</option>
@@ -30,36 +30,26 @@
       </form>
       <hr>
       <hr>
-      <h1>RESULTADOS</h1>
-      <table border="2px">
-          <thead>
-              <th>NOMBRE</th>
-              <th>APELLIDOS</th>
-              <th>RUT</th>
-              <th>CURSO</th>
-          </thead>
 
-        <tbody>
-
+        <div class="container-table">
+            <div class="table__title">Lista De Alumnos</div>
+            <div class="table__header">Nombre</div>
+            <div class="table__header">Apellidos</div>
+            <div class="table__header">RUT</div>
+            <div class="table__header">Curso</div>
           <?php
 
               include 'functions/leer.php';
-	      if (isset($query)){
+	           if (isset($query)){
               while($row= mysqli_fetch_array($query)){?>
-
-                <tr>
-                    <td><?= $row['nombre'] ?></td>
-                    <td><?= $row['apellidos'] ?></td>
-                    <td><?= $row['rut'] ?></td>
-                    <td><?= $row['curso'] ?></td>
-                </tr>
+            <div class="table__item"><?= $row['nombre'] ?></div>
+            <div class="table__item"><?= $row['apellidos'] ?></div>
+            <div class="table__item"><?= $row['rut'] ?></div>
+            <div class="table__item"><?= $row['curso'] ?></div>
 
             <?php }
             }
             ?>
-
-        </tbody>
-
-      </table>
+        </div>
   </body>
 </html>
