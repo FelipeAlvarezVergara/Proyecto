@@ -1,0 +1,52 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#menu ul {
+    list-style: none;
+    background: rgba(0,51,102,1);
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+#menu #item {
+    display: inline-block;
+}
+
+#menu #item a {
+    text-decoration: none;
+    color: rgba(255,255,255,1);
+    width: 200px;
+    display: block;
+    padding: 15px;
+    font-size: 17px;
+    font-family: Arial sans-serif;
+}
+
+#menu #desple {
+    display: none;
+    position: absolute;
+}
+
+#menu #item a:hover {
+    background: rgba(0,102,204,1);
+    color: rgba(0,204,255,1);
+    transition: 0.4s;
+}
+
+#menu #item:hover #desple {
+    display: block;
+}
+
+#menu #item span {
+    margin-right: 7px;
+}
+
+.fixed {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
