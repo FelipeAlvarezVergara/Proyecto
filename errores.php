@@ -25,7 +25,7 @@
           <div class="row">
               <form action="errores.php" method="post" enctype="multipart/form-data">
                     <h3>Subir Errores</h3>
-                    <input type="file" name="archivo">
+                    <input type="file" name="archivos">
                     <button type="submit" name="save">Subir</button>
                     <button type="submit" class="boton" name="alarm">Alarma</button>
               </form>

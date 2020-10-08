@@ -16,7 +16,7 @@
           <div class="row">
               <form action="supervisor.php" method="post" enctype="multipart/form-data">
                     <h3>Subir Reportes</h3>
-                    <input type="file" name="archivo">
+                    <input type="file" name="archivos">
                     <button type="submit" name="save">Subir</button>
               </form>
           </div>

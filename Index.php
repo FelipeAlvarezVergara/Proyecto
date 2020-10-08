@@ -27,8 +27,8 @@
                   <li class="title-menu"><span class="fa fa-user icon-menu">Profesor</li>
                   <li class="go-back">Atras</li>
 
-                  <li><a href="login.php">Iniciar</a></li>
-                  <li><a href="registro.php">Registrarse</a></li>
+                  <li><a href="Login.php">Iniciar</a></li>
+                  <li><a href="Registro.php">Registrarse</a></li>
                 </ul>
               </li>
               <li class="item-submenu" menu="2">
