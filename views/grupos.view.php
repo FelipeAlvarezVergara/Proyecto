@@ -1,50 +1,87 @@
 <?php
-      session_start();
-      require_once "../functions/dbgrupos.php";
-      $conn = conexion();
+
+    require 'functions/conexion.php';
+
 
  ?>
 
-<div class="row">
-    <div class="col-sm-12">
-      <h2>Tabla De Grupos</h2>
-        <table class="table table-hover table-borderer table-condensed">
-            <thead>
-              <tr>
-                  <th>Nombre</th>
-                  <th>Apellidos</th>
-                  <th>Grupo</th>
-              </tr>
-            </thead>
+ <!DOCTYPE html>
+ <html lang="es">
+   <head>
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+     <title>Grupos</title>
+     <link rel="stylesheet" type="text/css" href="js/bootstrap/css/bootstrap.css">
+     <link rel="stylesheet" type="text/css" href="js/select2/css/select2.css">
+     <link rel="stylesheet" href="css/font-awesome.css">
 
-              <?php
+     <script src="js/jquery-3.5.1.min.js"></script>
+     <script src="js/bootstrap/js/bootstrap.js"></script>
 
-                  if (isset($_SESSION['consulta'])) {
-                      if ($_SESSION['consulta'] > 0) {
-                          $idp = $_SESSION['consulta'];
-                          $sql = "SELECT id, nombre, apellidos, grupo, rol FROM grupos WHERE id = '$idp' ORDER BY grupo ASC";
-                      } else {
-                          $sql = "SELECT id, nombre, apellidos, grupo, rol FROM grupos ORDER BY grupo ASC";
+   </head>
+   <body>
+      <div class="container">
+        <div id="buscador"></div>
+        <div id="tabla">
+          <div class="row">
+            <div class="col-sm-12">
+              <h2>Tabla De Grupos</h2>
+              <form id="form" action="grupos.php" method="post">
+                <b>
+                </b>
+                <label>RUT</label>
+                <input type="text" name="rut" id="rut" maxlength="12" placeholder="Ingresar su RUT" class="input-100">
+                <script type="text/javascript">
+                      document.getElementById('rut').addEventListener('input', function(evt) {
+                      let value = this.value.replace(/\./g, '').replace('-', '');
+
+                      if (value.match(/^(\d{2})(\d{3}){2}(\w{1})$/)) {
+                      value = value.replace(/^(\d{2})(\d{3})(\d{3})(\w{1})$/, '$1.$2.$3-$4');
                       }
-                  } else {
-                      $sql = "SELECT id, nombre, apellidos, grupo, rol FROM grupos ORDER BY grupo ASC";
-                  }
-                  $query = mysqli_query($conn, $sql);
-                  while ($ver=mysqli_fetch_row($query)) {
+                      else if (value.match(/^(\d)(\d{3}){2}(\w{0,1})$/)) {
+                      value = value.replace(/^(\d)(\d{3})(\d{3})(\w{0,1})$/, '$1.$2.$3-$4');
+                      }
+                      else if (value.match(/^(\d)(\d{3})(\d{0,2})$/)) {
+                      value = value.replace(/^(\d)(\d{3})(\d{0,2})$/, '$1.$2.$3');
+                      }
+                      else if (value.match(/^(\d)(\d{0,2})$/)) {
+                      value = value.replace(/^(\d)(\d{0,2})$/, '$1.$2');
+                      }
+                      this.value = value;
+                    });
+                </script>
+                <input type="submit" name="buscar" value="Buscar">
+                <table class="table table-hover table-condensed table-borderer">
+                      <tr>
+                        <th>Nombre</th>
+                        <th>Apellidos</th>
+                        <th>RUT</th>
+                        <th>Grupo</th>
+                      </tr>
 
-               ?>
-            <thead>
-             <tbody>
-              <tr>
-                  <td><?php echo $ver[1] ?></td>
-                  <td><?php echo $ver[2] ?></td>
-                  <td><?php echo $ver[3] ?></td>
-              </tr>
-             </tbody>
-            </thead>
-              <?php
-                }
-               ?>
-        </table>
-    </div>
-</div>
+                    <?php
+
+                      include 'functions/congrupo.php';
+                      if (isset($query)) {
+                        while($row= mysqli_fetch_array($query)){
+
+                     ?>
+
+                      <tr>
+                          <td><?= $row['nombre'] ?></td>
+                          <td><?= $row['apellidos'] ?></td>
+                          <td><?= $row['rut'] ?></td>
+                          <td><?= $row['grupo'] ?></td>
+                      </tr>
+
+                  <?php }
+                  }
+                  ?>
+                </table>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+   </body>
+ </html>

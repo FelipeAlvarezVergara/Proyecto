@@ -24,7 +24,7 @@
         if (!empty($result) AND mysqli_num_rows($result) > 0) {
           echo "El rut ya existe";
         } else {
-          $query="INSERT INTO alumno(ida, nombre, apellidos, rut, curso) VALUES (null, '$nombre','$apellidos','$rut','$cursos')";
+          $query="INSERT INTO alumno(id, nombre, apellidos, rut, curso) VALUES (null, '$nombre','$apellidos','$rut','$cursos')";
           if (mysqli_query($conn, $query)) {
               echo "Datos ingresados correctamente";
           }else {

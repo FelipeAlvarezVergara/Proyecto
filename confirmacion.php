@@ -1,15 +1,14 @@
 <?php
 
     require 'admin/config.php';
-    require 'functions/condb.php';
+    require 'functions/conexion.php';
 
     if (isset($_POST['save'])) {
 
-      $nombre = $_POST['nombre'];
-      $apellidos = $_POST['apellidos'];
+      $rut = $_POST['rut'];
 
 
-      $sql = "SELECT * FROM grupos WHERE nombre = '$nombre' AND apellidos = '$apellidos' ORDER BY nombre ASC";
+      $sql = "SELECT * FROM alumno WHERE rut = '$rut' ORDER BY apellidos ASC";
       $resultado = mysqli_query($conn, $sql);
 
 
@@ -48,10 +47,27 @@
                  <form  id="form1" name="save" action="confirmacion.php" method="post">
                 <b>
                 </b>
-                   <label>Nombre</label>
-                   <input type="text" name="nombre" placeholder="Ingresar Nombre">
-                   <label>Apellidos</label>
-                   <input type="text" name="apellidos" placeholder="Ingresar Apellidos">
+                   <label>RUT</label>
+                   <input type="text" name="rut" id="rut" maxlength="12" placeholder="Ingresar su RUT" class="input-100">
+                   <script type="text/javascript">
+                         document.getElementById('rut').addEventListener('input', function(evt) {
+                         let value = this.value.replace(/\./g, '').replace('-', '');
+
+                         if (value.match(/^(\d{2})(\d{3}){2}(\w{1})$/)) {
+                         value = value.replace(/^(\d{2})(\d{3})(\d{3})(\w{1})$/, '$1.$2.$3-$4');
+                         }
+                         else if (value.match(/^(\d)(\d{3}){2}(\w{0,1})$/)) {
+                         value = value.replace(/^(\d)(\d{3})(\d{3})(\w{0,1})$/, '$1.$2.$3-$4');
+                         }
+                         else if (value.match(/^(\d)(\d{3})(\d{0,2})$/)) {
+                         value = value.replace(/^(\d)(\d{3})(\d{0,2})$/, '$1.$2.$3');
+                         }
+                         else if (value.match(/^(\d)(\d{0,2})$/)) {
+                         value = value.replace(/^(\d)(\d{0,2})$/, '$1.$2');
+                         }
+                         this.value = value;
+                       });
+                   </script>
                    <input type="submit" value="Buscar">
                   <table class="table table-hover table-condensed table-borderer">
                         <tr>

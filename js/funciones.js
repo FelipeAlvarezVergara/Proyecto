@@ -1,112 +1,65 @@
-
-function agregardatos(nombre, apellidos, grupo, rol){
-
-    datos = "nombre=" + nombre +
-            "&apellidos=" + apellidos +
-            "&grupo=" + grupo +
-            "&rol=" + rol;
-
-    $.ajax({
-        type: "POST",
-        url: "functions/agregarGrupos.php",
-        data: datos,
-        success:function(r){
-            if (r==1) {
-                $('#tabla').load('views/tabla.view.php');
-                alertify.success("Agregado con exito");
-            } else {
-                alertify.error("Fallo al agregar");
-            }
-        }
+$(document).ready(function () {
+    $("#randomSelect").click(function () {
+        var select = document.getElementsByClassName('rol');
+        for (var i=0; i<select.length; i++){
+			if (i % 2 == 0){
+				if( i < select.length){
+					var e = i+1;
+					var items = select[i].getElementsByTagName('option');
+					var items = select[e].getElementsByTagName('option');
+					var index = Math.floor(Math.random() * items.length);
+					select[i].selectedIndex = index;
+					if (index == 0){
+						select[e].selectedIndex = (index + 1);
+					}else{
+						select[e].selectedIndex = (index - 1);
+					}
+				}
+			}
+		}
+		
     });
-}
+});
 
-function agregaformg(datos){
+$(document).ready(function () {
+    $("#randomSelect").click(function () {
+		//console. clear()
+        var select = document.getElementsByClassName('grupo');
+        var grupos = [];
+        for (var i=0; i<select.length; i++){
+			if (i % 2 == 0){
+				if( i < select.length){
+					var e = i+1;
+					var items = select[i].getElementsByTagName('option');
+					var items = select[e].getElementsByTagName('option');
+					var index = Math.floor(Math.random() * items.length);
+					//console.log("original index " + index)
+					//if(i > 1){
+					
+					while (check_grupo(grupos,index)==1){
+						//console.log("index: " + index + " | array: "+ grupos);
+						var index = Math.floor(Math.random() * items.length);
+						//console.log("index: " + index + " | array: "+ grupos + " | new index: " + index)
+					}
+					//s}
+					grupos.push(index)
+					select[i].selectedIndex = index;
+					select[e].selectedIndex = index;
+					
+				}
+			}
+		}
+		//console.log(grupos);
+		var grupos = [];
+    });
+});
 
-    d=datos.split('||');
-
-    $('#idalumno').val(d[0]);
-    $('#grupou').val(d[3]);
-
-}
-
-function actualizaDatosg(){
-
-    id=$('#idalumno').val();
-    grupo=$('#grupou').val();
-
-    datos = "id=" + id +
-            "&grupo=" + grupo;
-
-
-      $.ajax({
-          type: "POST",
-          url: "functions/actualizaDatosg.php",
-          data: datos,
-          success:function(r){
-            if (r==1) {
-                $('#tabla').load('views/tabla.view.php');
-                alertify.success("Actualizado con exito");
-            } else {
-                alertify.error("Fallo al Actualizar");
-            }
-          }
-      });
-
-}
-
-function agregaformr(datos){
-    d=datos.split('||');
-
-    $('#idalumno').val(d[0]);
-    $('#rolu').val(d[4]);
-}
-
-function actualizaDatosr(){
-    id=$('#idalumno').val();
-    rol=$('#rolu').val();
-
-    datos = "id=" + id +
-            "&rol=" + rol;
-
-      $.ajax({
-          type: "POST",
-          url: "functions/actualizaDatosr.php",
-          data: datos,
-          success:function(r){
-            if (r==1) {
-                $('#tabla').load('views/tabla.view.php');
-                alertify.success("Actualizado con exito");
-            } else {
-                alertify.error("Fallo al Actualizar");
-            }
-          }
-      });
-
-
-}
-
-function preguntarSiNo(id){
-  alertify.confirm('Eliminar Alumno', '¿Esta seguro de eliminar este alumno?', function(){ eliminarDatos(id) }
-              , function(){ alertify.error('Se cancelo')});
-}
-
-function eliminarDatos(id){
-
-      datos ="id=" + id;
-
-      $.ajax({
-          type:"POST",
-          url: "functions/eliminarDatos.php",
-          data: datos,
-          success:function(r){
-              if (r==1) {
-                  $('#tabla').load('views/tabla.view.php');
-                  alertify.success("Eliminado con exito");
-              } else {
-                  alertify.error("Error al eliminar");
-              }
-          }
-
-      });
+function check_grupo(array,index){
+	var result = 0;
+	for(var i=0;i<array.length;i++){
+		if (array[i] == index){
+			result = 1;
+		}
+	}
+	return result;
 }

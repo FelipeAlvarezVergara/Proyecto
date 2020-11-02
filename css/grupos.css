@@ -1,0 +1,22 @@
+body {
+  background: #DDD;
+  font-family: Arial;
+}
+
+h2 {
+  text-align: center;
+}
+
+#form1 {
+  margin: auto;
+  text-align: center;
+}
+
+select {
+    margin: auto;
+    padding: 5px;
+    width: 50%;
+    font-family: Arial;
+    font-size: 12px;
+    text-align: center;
+}

@@ -1,19 +1,16 @@
 <?php
 
-    include 'condb.php';
+    include 'conexion.php';
 
-    if (!isset($_POST['nombre']) && !isset($_POST['apellidos'])){
+    if (!isset($_POST['rut'])){
 
-       $_POST['nombre'] = "";
-       $_POST['apellidos'] = "";
-       $buscar = $_POST['nombre'];
-       $buscara = $_POST['apellidos'];
+       $_POST['rut'] = "";
+       $buscar = $_POST['rut'];
 
     }
-       $buscar = $_POST['nombre'];
-       $buscara = $_POST['apellidos'];
-       if (!empty($buscar) && $buscar!="" && !empty($buscara) && $buscara!="") {
-           $sql = "SELECT * FROM grupos WHERE nombre LIKE '%".$buscar."%' AND apellidos LIKE '%".$buscara."%' ORDER BY apellidos ASC";
+       $buscar = $_POST['rut'];
+       if (!empty($buscar) && $buscar!="") {
+           $sql = "SELECT * FROM alumno WHERE rut LIKE '%".$buscar."%' ORDER BY apellidos ASC";
            $query = mysqli_query($conn, $sql);
        }
 

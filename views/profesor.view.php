@@ -11,7 +11,11 @@
           <ul>
               <li id="item"><a href="profesor.php"><span class="fa fa-home icon-menu"></span>Inicio</a></li>
               <li id="item"><a href="buscador.php" target="carga"><span class="fa fa-address-book"></span>Cursos</a></li>
-              <li id="item"><a href="tablag.php" target="carga"><span class="fa fa-users"></span>Registro Grupos</a>
+              <li id="item"><a href=""><span class="fa fa-users"></span>Grupos</a>
+                  <ul id="desple">
+                      <li><a href="tablag.php" target="carga"><span class="fa fa-pencil-square"></span>Registro Grupo</a></li>
+                      <li><a href="cgrupo.php" target="carga"><span class="fa fa-check-square-o"></span>Chequeo Grupos</a></li>
+                  </ul>
               </li>
               <li id="item"><a href=""><span class="fa fa-pencil-square-o"></span>Actividades</a>
                   <ul id="desple">

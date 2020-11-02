@@ -1,7 +1,7 @@
 	<?php
 
     require 'admin/config.php';
-    require 'functions/condb.php';
+    require 'functions/conexion.php';
 
     if (isset($_POST['confirmar'])) {
       if (is_array($_POST['id'])) {
@@ -9,7 +9,7 @@
 					for($i=0;$i<$arrayc;$i++){
 						$estado = $_POST['estado'][$i];
 						$id = $_POST['id'][$i];
-						$sql = "UPDATE grupos SET chequeo=\"$estado\" WHERE id = '$id'";
+						$sql = "UPDATE alumno SET chequeo=\"$estado\" WHERE id = '$id'";
 						$stat = mysqli_query($conn, $sql);
 				}
       }
@@ -51,8 +51,9 @@
 
                           <?php
 
-                            include 'functions/concheck.php';
+                            include ('functions/concheck.php');
                             if (isset($query)) {
+
                               while($row= mysqli_fetch_array($query)) {
 
                             ?>
